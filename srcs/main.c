@@ -19,6 +19,7 @@ static int	usage()
 
 int			 main(int ac, char **av)
 {
+	int		res;
 	t_nm	nm;
 
 	#if !__MACH__ && !__linux__
@@ -33,12 +34,15 @@ int			 main(int ac, char **av)
 		return ft_perror("open");
 	if (fstat(nm.fd, &(nm.stat)) < 0)
 		return ft_perror("fstat");
-	if ((nm.content = (uint8_t*)mmap(0, nm.stat.st_size, PROT_READ, MAP_PRIVATE, nm.fd, 0)) == MAP_FAILED)
+	if ((nm.mapfile = (uint8_t*)mmap(0, nm.stat.st_size, PROT_READ, MAP_PRIVATE, nm.fd, 0)) == MAP_FAILED)
 		return ft_perror("mmap");
 
 	#if __MACH__
-		return main_macos(&nm);
+		res = main_macos(&nm);
 	#elif __linux__
-		return main_linux(&nm);
+		res =  main_linux(&nm);
 	#endif
+	munmap(nm.mapfile, nm.stat.st_size);
+	close(nm.fd);
+	return res;
 }
