@@ -13,5 +13,6 @@ int main(int ac, char **av)
 		perror("open");
 		return (EXIT_FAILURE);
 	}
-	return (EXIT _SUCCESS);
+	ft_printf("Wassup\n");
+	return (EXIT_SUCCESS);
 }

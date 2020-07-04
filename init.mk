@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2020/02/24 08:39:34 by ezalos           ###   ########.fr        #
+#    Updated: 2020/07/04 18:22:01 by ezalos           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ GIT_VALID				=	false
 ##########################
 
 LIB_DIR					=	./libft
-LIB						=	$(LIB_DIR)/libft.a -lm
+LIB						=	$(LIB_DIR)/libft.a
 
 
 ##########################

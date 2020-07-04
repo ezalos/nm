@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   head.h                                             :+:      :+:    :+:   */
+/*   auto_nm_.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ezalos <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 11:15:02 by ldevelle          #+#    #+#             */
-/*   Updated: 2020/07/04 18:18:12 by ezalos           ###   ########.fr       */
+/*   Created: 2020/07/04 18:24:22 by ezalos            #+#    #+#             */
+/*   Updated: 2020/07/04 18:24:22 by ezalos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEAD_H
-# define HEAD_H
+#ifndef AUTO_NM__H
+# define AUTO_NM__H
 
-# include "libft.h"
-// # include "auto_project.h"
-
-# include <sys/mman.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <stdlib.h>
+int main(int ac, char **av);
 
 #endif
