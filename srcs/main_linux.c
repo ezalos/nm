@@ -191,10 +191,69 @@ int elf_get_symval(Elf64_Ehdr *hdr, int table, uint idx)
 	return (0);
 }
 
+
+void new_try(Elf64_Ehdr *elf, void *data)
+{
+	Elf64_Shdr      *shdr = (Elf64_Shdr *) (data + elf->e_shoff);
+	Elf64_Shdr      *symtab;
+//	Elf64_Shdr      *shstrtab;
+	Elf64_Shdr      *strtab;
+	char            *str = (char *) (data + shdr[elf->e_shstrndx].sh_offset);
+
+	for (int i = 0; i < elf->e_shnum; i++)
+	{
+		if (shdr[i].sh_size)
+		{
+    		printf("%s\n", &str[shdr[i].sh_name]);
+    		if (ft_strcmp(&str[shdr[i].sh_name], ".symtab") == 0)
+      			symtab = (Elf64_Shdr *) &shdr[i];
+ //   		if (ft_strcmp(&str[shdr[i].sh_name], ".shstrtab") == 0)
+ //     			shstrtab = (Elf64_Shdr *) &shdr[i];
+    		if (ft_strcmp(&str[shdr[i].sh_name], ".strtab") == 0)
+      			strtab = (Elf64_Shdr *) &shdr[i];
+  		}
+	}
+
+//	str = (char *) shstrtab;
+//	for (size_t i = 0; i < (symtab->sh_size / sizeof(Elf64_Sym *)); i ++) 
+//	{
+//  		printf("%s\n", &str[shstrtab[i].sh_name]);
+//	}
+
+	Elf64_Sym *sym = (Elf64_Sym*) (data + symtab->sh_offset);
+	str = (char*) (data + strtab->sh_offset);
+	for (size_t i = 0; i < symtab->sh_size / sizeof(Elf64_Sym); i++)
+	{
+ 		printf("%s\n", str + sym[i].st_name);
+	}
+}
+
+
+void print_sym_tab(Elf64_Ehdr *header)
+{
+	Elf64_Shdr	*sections;
+	Elf64_Sym	*symtab;
+	int			i;
+
+	ft_printf("Header ptr: %p\n", header);
+	sections = (Elf64_Shdr *)((char *)header + header->e_shoff);
+	ft_printf("Sectio ptr: %p\n", sections);
+	ft_printf("e_shnum : %d\n", header->e_shnum);
+	i = -1;
+	while (++i < header->e_shnum)
+    	if (sections[i].sh_type == SHT_SYMTAB)
+		{
+        	symtab = (Elf64_Sym *)((char *)header + sections[i].sh_offset);
+			ft_printf("[%d] : |%s|\n", i, symtab->st_name);
+        }
+		else
+			ft_printf("[%d] : %d\n", i, sections[i].sh_type);
+}
+
 int main_linux(t_nm *nm)
 {
-	char *res;
-	int i;
+//	char *res;
+//	int i;
 
 	if (elf_check_file((Elf64_Ehdr *)nm->content) == TRUE)
 	{
@@ -203,6 +262,8 @@ int main_linux(t_nm *nm)
 		if (elf_check_supported((Elf64_Ehdr *)nm->content) == TRUE)
 		{
 			ft_printf("File is supported!\n");
+			print_sym_tab((Elf64_Ehdr *)nm->content);
+			new_try((Elf64_Ehdr *)nm->content, nm->content);
 			// i = 0;
 			// while (++i)
 			// {
