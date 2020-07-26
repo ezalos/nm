@@ -213,6 +213,36 @@ void print_sym_tab(Elf64_Ehdr *header)
 			ft_printf("[%d] : %d\n", i, sections[i].sh_type);
 }
 
+void	print_type(Elf64_Sym sym)
+{
+	if (sym.st_info == STT_NOTYPE)
+		ft_printf("STT_NOTYPE  ");
+	else if (sym.st_info == STT_OBJECT)
+		ft_printf("STT_OBJECT  ");
+	else if (sym.st_info == STT_FUNC)
+		ft_printf("STT_FUNC    ");
+	else if (sym.st_info == STT_SECTION)
+		ft_printf("STT_SECTION ");
+	else if (sym.st_info == STT_FILE)
+		ft_printf("STT_FILE    ");
+	else if (sym.st_info == STT_LOPROC)
+		ft_printf("STT_LOPROC  ");
+	else if (sym.st_info == STT_HIPROC)
+		ft_printf("STT_HIPROC  ");
+	else if (sym.st_info == STB_LOCAL)
+		ft_printf("STB_LOCAL   ");
+	else if (sym.st_info == STB_GLOBAL)
+		ft_printf("STB_GLOBAL  ");
+	else if (sym.st_info == STB_WEAK)
+		ft_printf("STB_WEAK    ");
+	else if (sym.st_info == STB_LOPROC)
+		ft_printf("STB_LOPROC  ");
+	else if (sym.st_info == STB_HIPROC)
+		ft_printf("STB_HIPROC  ");
+	else
+		ft_printf("st_info %-3u ", sym.st_info);
+}
+
 /*
 **
 **	HEADER 1/2 : Technical details for identification and execution
@@ -247,6 +277,12 @@ void print_sym_tab(Elf64_Ehdr *header)
 
 void new_try(Elf64_Ehdr *elf, void *data)
 {
+	// Elf64_Shdr
+	// A file's section header table lets one locate all the file's sections.
+	//	 The section header table is an array of Elf32_Shdr or Elf64_Shdr structures.
+	//	 The ELF header's e_shoff member gives the byte offset from the beginning of the file to the section header table.
+	//	 e_shnum holds the number of entries the section header table contains. e_shentsize holds the size in bytes of each entry.
+	//	 A section header table index is a subscript into this array.
 	Elf64_Shdr      *symtab;
 	Elf64_Shdr      *shstrtab;
 	Elf64_Shdr      *strtab;
@@ -257,9 +293,9 @@ void new_try(Elf64_Ehdr *elf, void *data)
 	Elf64_Shdr      *section_header = (Elf64_Shdr *) (data + elf->e_shoff); //section names is after data
 
 	// sh_offset
-	// This member's value holds the byte offset from the beginning of the file to the first byte in the section.
+	// 	This member's value holds the byte offset from the beginning of the file to the first byte in the section.
 	// e_shstrndx
-	// This member holds the section header table index of the entry associated with the section name string table.
+	//	This member holds the section header table index of the entry associated with the section name string table.
 	char            *section_names = (char *) (data + section_header[elf->e_shstrndx].sh_offset);
 
 	// Various sections hold program and control information:
@@ -291,8 +327,8 @@ void new_try(Elf64_Ehdr *elf, void *data)
 	(void)shstrtab;
 
 	// Elf64_Sym
-	// An object file's symbol table holds information needed to locate and relocate a program's symbolic definitions and references.
-	// A symbol table index is a subscript into this array.
+	// 	An object file's symbol table holds information needed to locate and relocate a program's symbolic definitions and references.
+	// 	A symbol table index is a subscript into this array.
 	//		st_name : holds offset to read in
 	Elf64_Sym *sym = (Elf64_Sym*) (data + symtab->sh_offset);
 	section_names = (char*) (data + strtab->sh_offset);
@@ -301,7 +337,12 @@ void new_try(Elf64_Ehdr *elf, void *data)
 	i = -1;
 	while ((size_t)++i < symtab->sh_size / symtab->sh_entsize) /* was 'symtab->sh_size / sizeof(Elf64_Sym)' before */
 	{
- 		ft_printf("%s\n", section_names + sym[i].st_name);
+		if (sym[i].st_info != STT_SECTION && sym[i].st_info != STT_NOTYPE)
+		{
+			ft_printf("%016x ", elf->e_shoff + (sym[i].st_shndx * elf->e_shentsize));// not good yet
+			print_type(sym[i]);
+	 		ft_printf("%s\n", section_names + sym[i].st_name);
+		}
 	}
 	ft_printf("%~{}");
 }
@@ -315,14 +356,8 @@ int main_linux(t_nm *nm)
 		if (elf_check_supported((Elf64_Ehdr *)nm->content) == TRUE)
 		{
 			ft_printf("File is supported!\n");
-			print_sym_tab((Elf64_Ehdr *)nm->content);
+			// print_sym_tab((Elf64_Ehdr *)nm->content);
 			new_try((Elf64_Ehdr *)nm->content, nm->content);
-			// i = 0;
-			// while (++i)
-			// {
-			// 	res = elf_lookup_string((Elf64_Ehdr *)nm->content, i);
-			// 	ft_printf("%d|%s|\n", i, res);
-			// }
 		}
 
 	}
