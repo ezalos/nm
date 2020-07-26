@@ -192,43 +192,6 @@ int elf_get_symval(Elf64_Ehdr *hdr, int table, uint idx)
 }
 
 
-void new_try(Elf64_Ehdr *elf, void *data)
-{
-	Elf64_Shdr      *shdr = (Elf64_Shdr *) (data + elf->e_shoff);
-	Elf64_Shdr      *symtab;
-//	Elf64_Shdr      *shstrtab;
-	Elf64_Shdr      *strtab;
-	char            *str = (char *) (data + shdr[elf->e_shstrndx].sh_offset);
-
-	for (int i = 0; i < elf->e_shnum; i++)
-	{
-		if (shdr[i].sh_size)
-		{
-    		printf("%s\n", &str[shdr[i].sh_name]);
-    		if (ft_strcmp(&str[shdr[i].sh_name], ".symtab") == 0)
-      			symtab = (Elf64_Shdr *) &shdr[i];
- //   		if (ft_strcmp(&str[shdr[i].sh_name], ".shstrtab") == 0)
- //     			shstrtab = (Elf64_Shdr *) &shdr[i];
-    		if (ft_strcmp(&str[shdr[i].sh_name], ".strtab") == 0)
-      			strtab = (Elf64_Shdr *) &shdr[i];
-  		}
-	}
-
-//	str = (char *) shstrtab;
-//	for (size_t i = 0; i < (symtab->sh_size / sizeof(Elf64_Sym *)); i ++) 
-//	{
-//  		printf("%s\n", &str[shstrtab[i].sh_name]);
-//	}
-
-	Elf64_Sym *sym = (Elf64_Sym*) (data + symtab->sh_offset);
-	str = (char*) (data + strtab->sh_offset);
-	for (size_t i = 0; i < symtab->sh_size / sizeof(Elf64_Sym); i++)
-	{
- 		printf("%s\n", str + sym[i].st_name);
-	}
-}
-
-
 void print_sym_tab(Elf64_Ehdr *header)
 {
 	Elf64_Shdr	*sections;
@@ -250,11 +213,101 @@ void print_sym_tab(Elf64_Ehdr *header)
 			ft_printf("[%d] : %d\n", i, sections[i].sh_type);
 }
 
+/*
+**
+**	HEADER 1/2 : Technical details for identification and execution
+**
+**		Elf Header
+**		Struct : Elf64_Ehdr
+**
+**		Program Header table
+**		Struct : Elf64_Phdr
+**			execution information : to_load, size, rights,...
+**
+**
+**	SECTIONS : Contents of the executable
+**
+**		Code
+**			executable information
+**
+**		Data
+**			Information used by the code
+**
+**		Sections' names
+**
+**
+**	HEADER 1/2 : Technical details for linking (ignored at execution)
+**
+**		Section Header Table
+**		Struct : Elf64_Shdr
+**			Linking (Connecting program objects) information
+**			sh_name : offset to read string in 'Sections' names'
+**
+*/
+
+void new_try(Elf64_Ehdr *elf, void *data)
+{
+	Elf64_Shdr      *symtab;
+	Elf64_Shdr      *shstrtab;
+	Elf64_Shdr      *strtab;
+	int				i;
+
+	// e_shoff
+	// This member holds the section header table's file offset in bytes.
+	Elf64_Shdr      *section_header = (Elf64_Shdr *) (data + elf->e_shoff); //section names is after data
+
+	// sh_offset
+	// This member's value holds the byte offset from the beginning of the file to the first byte in the section.
+	// e_shstrndx
+	// This member holds the section header table index of the entry associated with the section name string table.
+	char            *section_names = (char *) (data + section_header[elf->e_shstrndx].sh_offset);
+
+	// Various sections hold program and control information:
+	// we are looking through section names to locate the section of interest (symbol table)
+
+	// ft_printf("%~{255;155;255}");
+	i = -1;
+	while (++i < elf->e_shnum) // number of entries in the section header table
+	{
+		if (section_header[i].sh_size) // holds the section's size in bytes
+		{
+			// ft_printf("%s\n", &section_names[section_header[i].sh_name]);
+			if (section_header[i].sh_type == SHT_SYMTAB){
+				ft_printf("Symbol Table !\n\ti: %d\n\tname : %p\n\t thing %s\n", i, section_header[i].sh_name, &section_names[section_header[i].sh_name]);}
+
+			// This section holds a symbol table.
+    		if (ft_strcmp(&section_names[section_header[i].sh_name], ".symtab") == 0){
+      			symtab = (Elf64_Shdr *) &section_header[i];}
+
+			// This section holds section names. (which is itself right now, i guess)
+   			if (ft_strcmp(&section_names[section_header[i].sh_name], ".shstrtab") == 0){
+     			shstrtab = (Elf64_Shdr *) &section_header[i];}
+
+			// This section holds strings, most commonly the strings that represent the names associated with symbol table entries.
+    		if (ft_strcmp(&section_names[section_header[i].sh_name], ".strtab") == 0){
+      			strtab = (Elf64_Shdr *) &section_header[i];}
+  		}
+	}
+	(void)shstrtab;
+
+	// Elf64_Sym
+	// An object file's symbol table holds information needed to locate and relocate a program's symbolic definitions and references.
+	// A symbol table index is a subscript into this array.
+	//		st_name : holds offset to read in
+	Elf64_Sym *sym = (Elf64_Sym*) (data + symtab->sh_offset);
+	section_names = (char*) (data + strtab->sh_offset);
+
+	ft_printf("%~{155;255;255}");
+	i = -1;
+	while ((size_t)++i < symtab->sh_size / symtab->sh_entsize) /* was 'symtab->sh_size / sizeof(Elf64_Sym)' before */
+	{
+ 		ft_printf("%s\n", section_names + sym[i].st_name);
+	}
+	ft_printf("%~{}");
+}
+
 int main_linux(t_nm *nm)
 {
-//	char *res;
-//	int i;
-
 	if (elf_check_file((Elf64_Ehdr *)nm->content) == TRUE)
 	{
 		ft_printf("Good magic number!\n");
