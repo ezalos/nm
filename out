@@ -1,0 +1,331 @@
+0000000000209018 b garbage.5900 +
+0000000000209018 b garbage.5900
+0000000000209014 b on_off.5900 +
+0000000000209014 b on_off.5900
+0000000000004512 T write_0
+0000000000004512 x write_0 +
+00000000000044a8 T add_minimum_width_0
+00000000000044a8 x add_minimum_width_0 +
+000000000000212a T check_min_or_pre2
+000000000000212a x check_min_or_pre2 +
+                 U __stack_chk_fail@@GLIBC_2.4
+                 x __stack_chk_fail@@GLIBC_2.4 +
+                 U malloc@@GLIBC_2.2.5
+                 x malloc@@GLIBC_2.2.5 +
+                 U free@@GLIBC_2.2.5
+                 x free@@GLIBC_2.2.5 +
+                 U write@@GLIBC_2.2.5
+                 x write@@GLIBC_2.2.5 +
+                 w __cxa_finalize@@GLIBC_2.2.5
+                 x __cxa_finalize@@GLIBC_2.2.5 +
+                 U clock@@GLIBC_2.2.5
+                 x clock@@GLIBC_2.2.5 +
+                 U open@@GLIBC_2.2.5
+                 x open@@GLIBC_2.2.5 +
+                 U __libc_start_main@@GLIBC_2.2.5
+                 x __libc_start_main@@GLIBC_2.2.5 +
+                 U mmap@@GLIBC_2.2.5
+                 x mmap@@GLIBC_2.2.5 +
+                 U perror@@GLIBC_2.2.5
+                 x perror@@GLIBC_2.2.5 +
+                 U __fxstat@@GLIBC_2.2.5
+                 x __fxstat@@GLIBC_2.2.5 +
+                 U exit@@GLIBC_2.2.5
+                 x exit@@GLIBC_2.2.5 +
+0000000000209010 b completed.7698 +
+0000000000209010 b completed.7698
+0000000000003961 T ft_nb_to_a
+0000000000003961 x ft_nb_to_a +
+0000000000006b63 T ft_u_nb_to_a
+0000000000006b63 x ft_u_nb_to_a +
+0000000000209010 D _edata +
+0000000000209010 D _edata
+0000000000001034 T print_sym_tab
+0000000000001034 x print_sym_tab +
+0000000000004d3a t get_args_in_tab
+0000000000004d3a x get_args_in_tab +
+0000000000004c74 t transfer_tabtab_to_tab
+0000000000004c74 x transfer_tabtab_to_tab +
+00000000000023a2 T color_get_rgb
+00000000000023a2 x color_get_rgb +
+0000000000005e0c T round_move_nb
+0000000000005e0c x round_move_nb +
+0000000000001f4c T get_value_of_star_or_nb
+0000000000001f4c x get_value_of_star_or_nb +
+0000000000002a96 T ft_strsub
+0000000000002a96 x ft_strsub +
+0000000000004817 T type_dic
+0000000000004817 x type_dic +
+0000000000208d80 d _DYNAMIC
+0000000000208d80 x _DYNAMIC +
+0000000000002eb1 T ft_memalloc
+0000000000002eb1 x ft_memalloc +
+0000000000002f70 T ft_free_with_nalloc
+0000000000002f70 x ft_free_with_nalloc +
+00000000000050c4 T nalloc
+00000000000050c4 x nalloc +
+0000000000006cd0 R _IO_stdin_used
+0000000000006cd0 x _IO_stdin_used +
+0000000000000d6d T elf_check_supported
+0000000000000d6d x elf_check_supported +
+00000000000053fe T ft_putstr_fd
+00000000000053fe x ft_putstr_fd +
+0000000000209020 B _end +
+0000000000209020 B _end
+0000000000209010 D __TMC_END__
+0000000000209010 D __TMC_END__ +
+0000000000008644 r __FRAME_END__
+0000000000008644 x __FRAME_END__ +
+0000000000208d78 t __init_array_end
+0000000000006688 T add_space
+0000000000006688 x add_space +
+000000000000114f T print_symbol_code
+000000000000114f x print_symbol_code +
+0000000000002da3 T switch_garbage
+0000000000002da3 x switch_garbage +
+0000000000002de4 T ft_clean_garbage
+0000000000002de4 x ft_clean_garbage +
+00000000000051af T ft_burn_garbage
+00000000000051af x ft_burn_garbage +
+0000000000000909 t usage
+0000000000000909 x usage +
+00000000000052c1 T ft_nb_in_range
+00000000000052c1 x ft_nb_in_range +
+                 w _ITM_deregisterTMCloneTable
+                 x _ITM_deregisterTMCloneTable +
+                 w _ITM_registerTMCloneTable
+                 x _ITM_registerTMCloneTable +
+0000000000208f70 d _GLOBAL_OFFSET_TABLE_
+0000000000208f70 x _GLOBAL_OFFSET_TABLE_ +
+0000000000209008 D __dso_handle +
+0000000000209008 D __dso_handle
+0000000000000cce T elf_check_file
+0000000000000cce x elf_check_file +
+000000000000315f t ft_10digits_prime
+000000000000315f x ft_10digits_prime +
+0000000000005287 T ft_seed_time
+0000000000005287 x ft_seed_time +
+0000000000000a62 T elf_check_machine
+0000000000000a62 x elf_check_machine +
+0000000000001bbc T add_type
+0000000000001bbc x add_type +
+0000000000001283 T print_type
+0000000000001283 x print_type +
+0000000000003010 T ft_memmove
+0000000000003010 x ft_memmove +
+0000000000006a63 T paste_char_in_printf
+0000000000006a63 x paste_char_in_printf +
+0000000000006866 T paste_str_in_printf
+0000000000006866 x paste_str_in_printf +
+00000000000017c1 T paste_format_in_printf
+00000000000017c1 x paste_format_in_printf +
+00000000000068e7 T paste_float_in_printf
+00000000000068e7 x paste_float_in_printf +
+0000000000004399 T paste_int_in_printf
+0000000000004399 x paste_int_in_printf +
+00000000000045a1 T get_printf
+00000000000045a1 x get_printf +
+000000000000196b T ft_printf
+000000000000196b x ft_printf +
+[0m00000000000064ed T add_htag
+00000000000064ed x add_htag +
+0000000000005887 T float_no_htag
+0000000000005887 x float_no_htag +
+0000000000005557 T print_string
+0000000000005557 x print_string +
+0000000000004215 T output_string
+0000000000004215 x output_string +
+0000000000003ea1 T parsing
+0000000000003ea1 x parsing +
+0000000000001cc0 T check_arg
+0000000000001cc0 x check_arg +
+00000000000042d9 T init_struct_arg
+00000000000042d9 x init_struct_arg +
+00000000000061cf T reajust_hatg
+00000000000061cf x reajust_hatg +
+0000000000002a0d T ft_char_srch
+0000000000002a0d x ft_char_srch +
+0000000000006272 T add_minimum_width
+0000000000006272 x add_minimum_width +
+0000000000006cc0 T _fini
+0000000000006ca0 T __libc_csu_fini
+0000000000006ca0 x __libc_csu_fini +
+0000000000006cc0 x _fini +
+0000000000004e28 T ft_strjoin_multi
+0000000000004e28 x ft_strjoin_multi +
+0000000000000eac T elf_get_symval
+0000000000000eac x elf_get_symval +
+0000000000005220 T ft_memdel
+0000000000005220 x ft_memdel +
+0000000000002f09 T ft_strdel
+0000000000002f09 x ft_strdel +
+00000000000033f3 t ft_end_random
+00000000000033f3 x ft_end_random +
+00000000000030e8 t ft_if_random
+00000000000030e8 x ft_if_random +
+000000000000354b t ft_end_n_random
+000000000000354b x ft_end_n_random +
+000000000000365f T ft_random
+000000000000365f x ft_random +
+0000000000003a0f T ft_nb_len
+0000000000003a0f x ft_nb_len +
+0000000000006bd3 T ft_u_nb_len
+0000000000006bd3 x ft_u_nb_len +
+0000000000002a46 T ft_strlen
+0000000000002a46 x ft_strlen +
+0000000000006608 T add_sign
+0000000000006608 x add_sign +
+000000000000614d T reajust_sign
+000000000000614d x reajust_sign +
+0000000000000925 T main
+0000000000000925 x main +
+0000000000005ebb T s_to_bin
+0000000000005ebb x s_to_bin +
+0000000000002b5c T ft_strjoin
+0000000000002b5c x ft_strjoin +
+00000000000021a3 T check_minimum_width_or_precision
+00000000000021a3 x check_minimum_width_or_precision +
+0000000000000e80 t elf_section
+0000000000000e80 x elf_section +
+0000000000005684 T float_exception
+0000000000005684 x float_exception +
+00000000000059f5 T neg_gestion
+00000000000059f5 x neg_gestion +
+000000000000292a T color_gestion
+000000000000292a x color_gestion +
+000000000000224c T bonus_gestion
+000000000000224c x bonus_gestion +
+00000000000063e3 T add_precison
+00000000000063e3 x add_precison +
+0000000000002db0 T malloco
+0000000000002db0 x malloco +
+0000000000002d6a T ft_bzero
+0000000000002d6a x ft_bzero +
+000000000000501a T ft_swap
+000000000000501a x ft_swap +
+0000000000006797 T type_p
+0000000000006797 x type_p +
+0000000000002cd8 T ft_strcmp
+0000000000002cd8 x ft_strcmp +
+0000000000006736 T reajust_p
+0000000000006736 x reajust_p +
+0000000000002c51 T ft_strdup
+0000000000002c51 x ft_strdup +
+00000000000040ae T output_invisible_char
+00000000000040ae x output_invisible_char +
+00000000000071c0 r __GNU_EH_FRAME_HDR
+0000000000000e67 t elf_sheader
+0000000000000e67 x elf_sheader +
+0000000000003c88 T parsing_unsigned_integer
+0000000000003c88 x parsing_unsigned_integer +
+0000000000005439 T print_unsigned_integer
+0000000000005439 x print_unsigned_integer +
+0000000000003adb T parsing_integer
+0000000000003adb x parsing_integer +
+0000000000003a86 T print_integer
+0000000000003a86 x print_integer +
+0000000000001b3a T check_modifier
+0000000000001b3a x check_modifier +
+0000000000006b20 T ft_toupper
+0000000000006b20 x ft_toupper +
+0000000000005e91 T print_character
+0000000000005e91 x print_character +
+00000000000055bd T print_pointer
+00000000000055bd x print_pointer +
+0000000000006b42 T ft_islower
+0000000000006b42 x ft_islower +
+0000000000003786 T ft_power
+0000000000003786 x ft_power +
+00000000000037d3 T ft_str_rgbcolor
+00000000000037d3 x ft_str_rgbcolor +
+0000000000002527 T color_nb_with_prand_color
+0000000000002527 x color_nb_with_prand_color +
+0000000000000a43 t ft_perror
+00000000000008ea t ft_perror
+0000000000000a43 x ft_perror +
+00000000000008ea x ft_perror +
+00000000000051a2 T ft_garbage_collector
+00000000000051a2 x ft_garbage_collector +
+0000000000005377 T ft_putbnbr_str
+0000000000005377 x ft_putbnbr_str +
+0000000000002044 T get_value_of_star_or_str
+0000000000002044 x get_value_of_star_or_str +
+000000000000575c T round_float_str
+000000000000575c x round_float_str +
+0000000000002711 T color_rand_color_based_int_str
+0000000000002711 x color_rand_color_based_int_str +
+0000000000000810 t deregister_tm_clones
+0000000000000810 x deregister_tm_clones +
+0000000000000850 t register_tm_clones
+0000000000000850 x register_tm_clones +
+0000000000004a9f T type_s
+0000000000004a9f x type_s +
+0000000000001e85 T check_flags
+0000000000001e85 x check_flags +
+0000000000004b69 T ajust_flags
+0000000000004b69 x ajust_flags +
+0000000000003e32 T parsing_float
+0000000000003e32 x parsing_float +
+0000000000005c59 T get_decimal_from_float
+0000000000005c59 x get_decimal_from_float +
+0000000000005bcb T get_int_from_float
+0000000000005bcb x get_int_from_float +
+0000000000005a30 T print_float
+0000000000005a30 x print_float +
+0000000000006cb0 t fstat
+0000000000006cb0 T __fstat
+0000000000006cb0 x fstat +
+0000000000006cb0 x __fstat +
+0000000000004305 T init_struct
+0000000000004305 x init_struct +
+0000000000002328 T color_reset
+0000000000002328 x color_reset +
+0000000000005083 T ft_memset
+0000000000005083 x ft_memset +
+0000000000002a75 T ft_isdigit
+0000000000002a75 x ft_isdigit +
+0000000000000708 T _init
+0000000000006c30 T __libc_csu_init
+0000000000006c30 x __libc_csu_init +
+0000000000000708 x _init +
+00000000000018f2 T we_just_found_a_percent
+00000000000018f2 x we_just_found_a_percent +
+0000000000004c53 T ft_isprint
+0000000000004c53 x ft_isprint +
+0000000000209000 D data_start +
+0000000000209000 D __data_start +
+0000000000209000 D __data_start
+0000000000209000 W data_start
+                 w __gmon_start__
+                 x __gmon_start__ +
+0000000000209010 B __bss_start +
+0000000000209010 B __bss_start
+00000000000007e0 T _start
+00000000000007e0 x _start +
+0000000000208d70 t __init_array_start
+0000000000005fa9 T ft_strrev
+0000000000005fa9 x ft_strrev +
+0000000000002e5b T ft_strnew
+0000000000002e5b x ft_strnew +
+00000000000008a0 t __do_global_dtors_aux
+00000000000008a0 x __do_global_dtors_aux +
+0000000000001767 T main_linux
+0000000000001767 x main_linux +
+00000000000046ae T type_oux
+00000000000046ae x type_oux +
+00000000000008e0 t frame_dummy
+00000000000008e0 x frame_dummy +
+000000000000309e T ft_memcpy
+000000000000309e x ft_memcpy +
+0000000000006042 T print_string_to_binary
+0000000000006042 x print_string_to_binary +
+000000000000609d T print_binary
+000000000000609d x print_binary +
+0000000000208d78 t __do_global_dtors_aux_fini_array_entry
+0000000000208d78 x __do_global_dtors_aux_fini_array_entry +
+0000000000208d70 t __frame_dummy_init_array_entry
+0000000000208d70 x __frame_dummy_init_array_entry +
+00000000000013c7 T new_try
+00000000000013c7 x new_try +
+00000000000049f2 T type_empty
+00000000000049f2 x type_empty +
